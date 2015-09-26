@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import urllib
+import urllib3
 
 #cat-reqi Actual Course/Item
 #cat-reqa Header/Area
@@ -7,8 +7,16 @@ import urllib
 
 COURSE_CLASS = "cat-reqi"
 
-doc = BeautifulSoup(urllib.request.urlopen('http://catalog.utdallas.edu/now/undergraduate/programs/jsom/business-administration').read(), 'html5lib')
-for link in doc.find_all('p'):
-    if link['class'][0][:len(COURSE_CLASS)] == COURSE_CLASS:
-        print(link)
+http = urllib3.PoolManager()
+curURL = 'http://catalog.utdallas.edu/now/undergraduate/programs/jsom/business-administration'
 
+data = http.request('GET', curURL).data
+
+doc = BeautifulSoup(data, 'html5lib')
+
+for link in doc.find_all('p'):
+    try:
+        if link['class'][0][:len(COURSE_CLASS)] == COURSE_CLASS:
+            print(link)
+    except KeyError:
+        continue
