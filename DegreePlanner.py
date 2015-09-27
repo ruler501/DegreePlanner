@@ -1,3 +1,8 @@
+import copy
+import html
+import json
+import sys
+import traceback
 import urllib3
 from bs4 import BeautifulSoup
 from graphviz import Digraph
@@ -7,27 +12,72 @@ from graphviz import Digraph
 #cat-reqg Sub-Heading/Group
 
 COURSE_CLASS = "cat-reqi"
+HOURS_PREFIX = '<span class="course_hours">('
 
 http = urllib3.PoolManager()
-curURL = 'http://catalog.utdallas.edu/now/undergraduate/programs/jsom/business-administration'
 
-data = ''#http.request('GET', curURL).data
+itemTemplate = {
+        "name": "",
+        "code": "",
+        "description": "Testing Description but don't actually care",
+        "hours": 0,
+        "completed": False,
+        "prereqs": [],
+        "coreqs": [],
+        "alternatives": [],
+        "equivalencies": []
+    }
 
-doc = BeautifulSoup(data, 'html5lib')
+items = []
 
-for link in doc.find_all('p'):
-    try:
-        if link['class'][0][:len(COURSE_CLASS)] == COURSE_CLASS:
-            print(link)
-    except KeyError:
-        continue
+def doesExist(code):
+    for item in items:
+        if item["code"] == code:
+            return True
+    return False
 
-items = [{"name": "Testing", "code": "TEST 1010", "description": "We like testing new courses to BS freshman.", "hours": 0, 
-          "prereqs": [{"name": "Freshman Seminar", "code": "UNIV 1010"}], 
-          "coreqs": [{"name": "Discrete Math", "code": "CS 2305"}],
-          "alternatives": [{"name": "Introduction to Business", "code": "BSN 1200"}],
-          "equivalencies": [{"code": "ADV 1010"}]},]
+def addItem(item):
+    if doesExist(item["code"]):
+        #TODO Merge with the previous definition
+        return
+    items.append(item)
 
+def addDegree(url):
+    data = http.request('GET', url).data
+
+    doc = BeautifulSoup(data, 'lxml')
+
+    for link in doc.find_all('p'):
+        try:
+            if link['class'][0][:len(COURSE_CLASS)] == COURSE_CLASS:
+                try:
+                    item = copy.deepcopy(itemTemplate)
+                    item["name"] = link.text[len(link.a.text)+1:]
+                    item["code"] = link.a.text
+                    classStr = html.unescape(link.a['title'])
+                    item["hours"] = int(classStr[classStr.index(HOURS_PREFIX)+len(HOURS_PREFIX)])
+                    try:
+                        tStr = classStr[classStr.index("Prerequisite"):]
+                        left = tStr.index('>')+1
+                        right = tStr[left:].index('<')
+                        if right > 4:
+                            item["prereqs"].append(dict(codes=[tStr[left:left + right],]))
+                    except ValueError:
+                        pass
+                    try:
+                        tStr = classStr[classStr.index("Corequisite"):]
+                        left = tStr.index('>')+1
+                        right = tStr[left:].index('<')
+                        if right > 4:
+                            item["coreqs"].append(dict(codes=[tStr[left:left + right],]))
+                    except ValueError:
+                        pass
+                    #TODO Implement adding of description 
+                    addItem(item)
+                except Exception as e:
+                    print(traceback.format_exc())
+        except KeyError:
+            continue
 
 def add_nodes(graph, nodes):
     for n in nodes:
@@ -45,30 +95,52 @@ def add_edges(graph, edges):
             graph.edge(*e)
     return graph
 
+INCLUDE_DESC = False
+
 def generateGraph(items):
+    """
+    Generates and renders a dependency graph for the class items being passed in
+    TODO Handle equivalencies nicely, currently just ignoring
+    """
     nodes = []
     edges = []
-    dot = Digraph(format='svg')
+    dot = Digraph()
     for item in items:
-        schools = []
-        for equiv in item["equivalencies"]:
-            schools.append(equiv["code"].split()[0])
-        school, num = item["code"].split()
-        schools.append(school)
-        schools.sort()
-        item["code"] = '/'.join(schools) + ' ' + num
-        for prereq in item["prereqs"]:
-            edges.append((prereq["code"], item["code"]))
-        for coreq in item["coreqs"]:
-            edges.append(((coreq["code"], item["code"]), {"style": "dashed"}))
+        for prereqs in item["prereqs"]:
+            for prereq in prereqs["codes"]:
+                edges.append((prereq, item["code"]))
+        for coreqs in item["coreqs"]:
+            for coreq in coreqs["codes"]:
+                edges.append(((coreq, item["code"]), {"style": "dashed", "constraint": "false"}))
         found = False
         for node in nodes:
             if node[0] == item["code"]:
                 found = True
         if not found:
-            nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
-                                                               + ' ' + str(item["hours"]) + " semester hours."}))
+            if INCLUDE_DESC:
+                if item["completed"]:
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
+                                                                   + ' ' + str(item["hours"]) + " semester hours.",
+                                                 "fillcolor": "gray", "style": "filled"}))
+                else:
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
+                                                                   + ' ' + str(item["hours"]) + " semester hours."}))
+            else:
+                if item["completed"]:
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fillcolor": "gray", "style": "filled"}))
+                else:
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"]}))
     dot = add_edges(add_nodes(dot, nodes), edges)
+    with open("DegreePlan.dot", 'w') as dotOut:
+        print(dot.source, file=dotOut)
     dot.render(view=True)
 
+if len(sys.argv) > 1:
+    for url in sys.argv[1:]:
+        addDegree(url)
+    with open("DegreePlan.json", 'w') as dbOut:
+        print(json.dumps(items, sort_keys=True, indent=4, separators=(',', ': ')), file=dbOut)
+else:
+    with open("DegreePlan.json", 'r') as dbIn:
+        items = json.loads(dbIn.read())
 generateGraph(items)

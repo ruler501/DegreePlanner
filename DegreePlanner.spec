@@ -6,27 +6,27 @@ Formats them in json output to a database(degree.json).
 	"code": "",
 	"description": "",
 	"hours": 0,
+	"complete": False,
 	"prereqs": [
 		{
-			"name": "",
-			"code": ""
+			"codes": ["",]
 		},
 	],
 	"coreqs": [
 		{
-			"name": "",
-			"code": ""
+			"codes": ["",]
 		},
 	]
 	"alternatives": [
 		{
-			"name": "",
-			"code": ""
+			"codes": ["",]
 		}
 	]
 	"equivalencies": [
 		{
-			"code": ""
+			"codes": ["",]
 		}
 	]
 }
+
+
