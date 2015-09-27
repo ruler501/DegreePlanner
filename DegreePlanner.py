@@ -1,3 +1,4 @@
+import collections
 import copy
 import html
 import json
@@ -58,18 +59,66 @@ def addDegree(url):
                     item["hours"] = int(classStr[classStr.index(HOURS_PREFIX)+len(HOURS_PREFIX)])
                     try:
                         tStr = classStr[classStr.index("Prerequisite"):]
-                        left = tStr.index('>')+1
-                        right = tStr[left:].index('<')
-                        if right > 4:
-                            item["prereqs"].append(dict(codes=[tStr[left:left + right],]))
+                        tStr = tStr[:tStr.index('.')]
+                        curList = []
+                        while True:
+                            left = 0
+                            right = 0
+                            try:
+                                left = tStr.index('>')+1
+                                print(tStr,'\n',tStr[left:]+'\n')
+                                right = tStr[left:].index('<')
+                            except ValueError:
+                                print(curList,'\n\n')
+                                item["prereqs"].append(dict(codes=curList))
+                                break
+                            if tStr[:left].find(')') is not -1:
+                                print(curList,'\n\n')
+                                item["prereqs"].append(dict(codes=curList))
+                                curList = []
+                            if tStr[:left].find('(') is not -1:
+                                print(curList,'\n\n')
+                                item["prereqs"].append(dict(codes=curList))
+                                curList = []
+                            elif tStr[:left].find('and') is not -1:
+                                print(curList,'\n\n')
+                                item["prereqs"].append(dict(codes=curList))
+                                curList = []
+                            if right > 4:
+                                curList.append(tStr[left:left + right])
+                            tStr = tStr[left+right+4:]
                     except ValueError:
-                        pass
+                        print(traceback.format_exc())
                     try:
                         tStr = classStr[classStr.index("Corequisite"):]
-                        left = tStr.index('>')+1
-                        right = tStr[left:].index('<')
-                        if right > 4:
-                            item["coreqs"].append(dict(codes=[tStr[left:left + right],]))
+                        tStr = tStr[:tStr.index('.')]
+                        curList = []
+                        while True:
+                            left = 0
+                            right = 0
+                            try:
+                                left = tStr.index('>')+1
+                                print(tStr,'\n',tStr[left:]+'\n')
+                                right = tStr[left:].index('<')
+                            except ValueError:
+                                print(curList,'\n\n')
+                                item["coreqs"].append(dict(codes=curList))
+                                break
+                            if tStr[:left].find(')') is not -1:
+                                print(curList,'\n\n')
+                                item["coreqs"].append(dict(codes=curList))
+                                curList = []
+                            if tStr[:left].find('(') is not -1:
+                                print(curList,'\n\n')
+                                item["coreqs"].append(dict(codes=curList))
+                                curList = []
+                            elif tStr[:left].find('and') is not -1:
+                                print(curList,'\n\n')
+                                item["coreqs"].append(dict(codes=curList))
+                                curList = []
+                            if right > 4:
+                                curList.append(tStr[left:left + right])
+                            tStr = tStr[left+right+4:]
                     except ValueError:
                         pass
                     #TODO Implement adding of description 
@@ -97,21 +146,107 @@ def add_edges(graph, edges):
 
 INCLUDE_DESC = False
 
+def findHours(code):
+    for item in items:
+        if item["code"] == code:
+            return item["hours"]
+    return int(code.split()[1][1])
+
+def isCompleted(code):
+    for item in items:
+        if item["code"] == code:
+            return item["completed"]
+    return False
+
+courseWeights = collections.defaultdict(int)
+courseIDeps = collections.defaultdict(list)
+courseDeps = collections.defaultdict(list)
+
+def calculateWeight(code, deps):
+    if isCompleted(code):
+        #Hacky way to make them come first
+        courseWeights[code]=1000
+    deps.append(code)
+    if courseWeights[code] > 0:
+        return
+    courseWeights[code] = findHours(code)
+    for idep in courseIDeps[code]:
+        if idep in deps:
+            continue
+        calculateWeight(idep, deps)
+        courseWeights[code] += courseWeights[idep]
+
+def sortGraph(items, edges):
+    for item in items:
+        courseIDeps[item["code"]] = []
+        courseDeps[item["code"]] = []
+        for edge in edges: 
+            source = target = None
+            if isinstance(edge[0], tuple):
+                target = edge[0][1]
+                source = edge[0][0]
+            else:
+                target = edge[1]
+                source = edge[0]
+                if target == item["code"] and source not in courseDeps[item["code"]]:
+                    courseDeps[item["code"]].append(source)
+            if source == item["code"] and target not in courseIDeps[item["code"]]:
+                courseIDeps[item["code"]].append(target)
+            if source not in courseDeps.keys():
+                courseDeps[source] = []
+            if target not in courseDeps.keys():
+                courseDeps[target] = []
+    for item in items:
+        calculateWeight(item["code"], [])
+        if item["completed"]:
+            courseDeps[item["code"]] = []
+    courseList = []
+    while not (len(courseDeps.keys()) == 0):
+        tList = []
+        for code, deps in courseDeps.items():
+            if deps == None:
+                continue
+            if len(deps) == 0 and (code not in courseList):
+                tList.append(code)
+        if len(tList) == 0:
+            raise Exception("Infinite loop reached")
+        tList.sort(key=(lambda x: courseWeights[x]), reverse=True)
+        total = 0
+        index = 0
+        for code in tList:
+            total += findHours(code)
+            if total > 18:
+                #print(total, ' ', code, ' ', tList[:index])
+                break
+            index += 1
+            for key in courseDeps.keys():
+                try:
+                    courseDeps[key].remove(code)
+                except:
+                    continue
+            courseDeps.pop(code)
+        courseList.append(tList[:index])
+    return courseList
+
 def generateGraph(items):
     """
     Generates and renders a dependency graph for the class items being passed in
     TODO Handle equivalencies nicely, currently just ignoring
+    TODO Generate subgraphs with same rank for semesters and have an invisible edge between them
+         to force vertical alignment
     """
     nodes = []
     edges = []
-    dot = Digraph()
+    dot = Digraph(format="svg",graph_attr = {"splines": "ortho", "autosize": "false", "size": "8.5,22", 
+                                             "landscape": "false", "ratio": "compress"})
     for item in items:
-        for prereqs in item["prereqs"]:
-            for prereq in prereqs["codes"]:
-                edges.append((prereq, item["code"]))
-        for coreqs in item["coreqs"]:
-            for coreq in coreqs["codes"]:
-                edges.append(((coreq, item["code"]), {"style": "dashed", "constraint": "false"}))
+        if not item["completed"]:
+            for prereqs in item["prereqs"]:
+                for prereq in prereqs["codes"]:
+                    edges.append((prereq, item["code"]))
+            for coreqs in item["coreqs"]:
+                for coreq in coreqs["codes"]:
+                    edges.append(((coreq, item["code"]), {"style": "dashed", "constraint": "false"}))
         found = False
         for node in nodes:
             if node[0] == item["code"]:
@@ -130,7 +265,21 @@ def generateGraph(items):
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fillcolor": "gray", "style": "filled"}))
                 else:
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"]}))
-    dot = add_edges(add_nodes(dot, nodes), edges)
+    courseList = sortGraph(items, edges)
+    semester = 1
+    for courses in courseList:
+        tNodes = []
+        tDot = Digraph(graph_attr={"rank": "same", "label": "Semester "+str(semester), "style": "dotted"})
+        for node in nodes:
+            for course in courses:
+                if course == node[0]:
+                    tNodes.append(node)
+        tDot = add_nodes(tDot, tNodes)
+        dot.subgraph(tDot)
+        semester += 1
+    for i in range(1,len(courseList)):
+        edges.append(((courseList[i-1][0], courseList[i][0]), {"style": "invis"}))
+    dot = add_edges(dot, edges)
     with open("DegreePlan.dot", 'w') as dotOut:
         print(dot.source, file=dotOut)
     dot.render(view=True)
