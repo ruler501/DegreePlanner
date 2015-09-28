@@ -228,6 +228,8 @@ def sortGraph(items, edges):
         courseList.append(tList[:index])
     return courseList
 
+START_SEMESTER = -1
+
 def generateGraph(items):
     """
     Generates and renders a dependency graph for the class items being passed in
@@ -237,8 +239,9 @@ def generateGraph(items):
     """
     nodes = []
     edges = []
-    dot = Digraph(format="svg",graph_attr = {"splines": "ortho", "autosize": "false", "size": "8.5,22", 
-                                             "landscape": "false", "ratio": "compress"})
+    dot = Digraph(format="pdf",graph_attr = {"splines": "ortho", "autosize": "false", "size": "8.5,11", 
+                                             "landscape": "true", "ratio": "compress", "fontsize": "32",
+                                             "page": "8.5,11", "ranksep": "1.5 equally"})
     for item in items:
         if not item["completed"]:
             for prereqs in item["prereqs"]:
@@ -256,29 +259,34 @@ def generateGraph(items):
                 if item["completed"]:
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
                                                                    + ' ' + str(item["hours"]) + " semester hours.",
-                                                 "fillcolor": "gray", "style": "filled"}))
+                                                 "fillcolor": "gray", "style": "filled", "fontsize": "24", "height": "1.5",
+                                                 "width": "8.5", "fixedsize": "shape"}))
                 else:
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
-                                                                   + ' ' + str(item["hours"]) + " semester hours."}))
+                                                                   + ' ' + str(item["hours"]) + " semester hours.",
+                                                 "fontsize": "24", "height": "1.5", "width": "8.5", "fixedsize": "shape"}))
             else:
                 if item["completed"]:
-                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fillcolor": "gray", "style": "filled"}))
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fillcolor": "gray",
+                                                 "style": "filled", "fontsize": "24", "height": "1.5",
+                                                 "width": "8.5", "fixedsize": "shape"}))
                 else:
-                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"]}))
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fontsize": "24", "height": "1.5",
+                                                 "width": "8.5", "fixedsize": "shape"}))
     courseList = sortGraph(items, edges)
-    semester = 1
-    for courses in courseList:
+    for i,courses in enumerate(courseList):
         tNodes = []
-        tDot = Digraph(graph_attr={"rank": "same", "label": "Semester "+str(semester), "style": "dotted"})
+        tDot = Digraph("cluster_"+str(i), graph_attr={"rank": "same", "label": "Semester "+str(i+START_SEMESTER), "style": "rounded", "penwidth": "3"})
+        #tDot = Digraph(graph_attr={"rank": "same", "label": "Semester "+str(i+START_SEMESTER), "style": "rounded", "penwidth": "3"})
         for node in nodes:
             for course in courses:
                 if course == node[0]:
                     tNodes.append(node)
         tDot = add_nodes(tDot, tNodes)
         dot.subgraph(tDot)
-        semester += 1
-    for i in range(1,len(courseList)):
-        edges.append(((courseList[i-1][0], courseList[i][0]), {"style": "invis"}))
+        print(i)
+        if i > 0:
+            edges.append(((courseList[i-1][0], courseList[i][0]), {"style": "invis", "weight": "100"}))
     dot = add_edges(dot, edges)
     with open("DegreePlan.dot", 'w') as dotOut:
         print(dot.source, file=dotOut)
