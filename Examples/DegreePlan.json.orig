@@ -1,0 +1,1548 @@
+[
+    {
+        "alternatives": [],
+        "code": "COMM 1311",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Survey of Oral and Technology-based Communication",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "RHET 1302",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Rhetoric",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "PHYS 2325",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "PHYS 2125"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Mechanics",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2413"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "PHYS 2326",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "PHYS 2126"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Electromagnetism and Waves",
+        "prereqs": [
+            {
+                "codes": [
+                    "PHYS 2325"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CHEM 1311",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "CHEM 1111"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "General Chemistry I",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "HUMA 1301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Exploration of the Humanities",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ARTS 1301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Exploration of the Arts",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "HIST 1301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "US History Survey to Civil War",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "HIST 1302",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "US Survey from Civil War",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "PSY 2301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Introduction to Psychology",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "GOVT 2305",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "American National Government",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "GOVT 2306",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "State and Local Government",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "PHYS 2125",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "PHYS 2325"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Physics Laboratory I5",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "PHYS 2126",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "PHYS 2326"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Physics Laboratory II",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "CHEM 1111",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "CHEM 1311"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "General Chemistry Laboratory I3",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "CS 1337",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "37 Computer Science I6",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 1336"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2418",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Linear Algebra6",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2413"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2420",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Differential Equations with Applications6",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2415"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2451",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Multivariable Calculus with Applications6",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2415"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2415",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Calculus of Several Variables",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 3310",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Theoretical Concepts of Calculus",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2415"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 3311",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Abstract Algebra I",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2415"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 3379",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Complex Variables",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 3310"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 4301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Mathematical Analysis I",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 3310"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 4302",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Mathematical Analysis II",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 4301"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 4334",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Numerical Analysis",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 1337"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "STAT 4351",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Probability",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 4341",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Topology",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 3310"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 3312",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Abstract Algebra II",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 3311"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 3380",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Differential Geometry",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2451"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2420"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ECS 3390",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Professional and Technical Communication3",
+        "prereqs": [
+            {
+                "codes": [
+                    "RHET 1302"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2413",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Differential Calculus4",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2306",
+                    "MATH 2312"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ECS 3361",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Social Issues and Ethics in Computer Science and Engineering6",
+        "prereqs": [
+            {
+                "codes": []
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ECS 1100",
+        "completed": true,
+        "coreqs": [
+            {
+                "codes": [
+                    "UNIV 1010"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Introduction to Engineering and Computer Science7",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "UNIV 1010",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Freshman Seminar",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "CS 1200",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 2,
+        "name": "Introduction to Computer Science and Software Engineering",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "CS 2305",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Discrete Mathematics for Computing I",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2312"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 2336",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Computer Science II",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 1337"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MATH 2414",
+        "completed": true,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Integral Calculus4",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2413"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3162",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3354"
+                ]
+            },
+            {
+                "codes": [
+                    "ECS 3361"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Professional Responsibility in Computer Science and Software Engineering",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3354"
+                ]
+            },
+            {
+                "codes": [
+                    "ECS 3361"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3305",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Discrete Mathematics for Computing II",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3340",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Computer Architecture",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 1337"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3341",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Probability and Statistics in Computer Science and Software Engineering",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3345",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 3341"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Data Structures and Introduction to Algorithmic Analysis",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2336"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3354",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": [
+                    "ECS 3390"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Software Engineering",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2336"
+                ]
+            },
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 3376",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "C/C++ Programming in a UNIX Environment",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 2336"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4141",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": [
+                    "CS 4341"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Digital Systems Laboratory",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4337",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Organization of Programming Languages",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 2336"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 2305"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3340"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4341",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "CS 4141"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Digital Logic and Computer Design",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3340"
+                ]
+            },
+            {
+                "codes": [
+                    "PHYS 2326"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4347",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Database Systems",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4348",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Operating Systems Concepts",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3340"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3376"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4349",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Advanced Algorithm Design and Analysis",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3305"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4384",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Automata Theory",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3305"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4485",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 4,
+        "name": "Computer Science Project",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            },
+            {
+                "codes": [
+                    "CS 3354"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 4334"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4386",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Compiler Design",
+        "prereqs": [
+            {
+                "codes": [
+                    "CS 3345"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "CS 4399",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Senior Honors in Computer Science",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ECON 2301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Principles of Macroeconomics",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ECON 2302",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Principles of Microeconomics",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ACCT 2301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Introductory Financial Accounting3",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ACCT 2302",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Introductory Management Accounting3",
+        "prereqs": [
+            {
+                "codes": [
+                    "ACCT 2301"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "BLAW 2301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Business and Public Law3",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "OPRE 3360",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Managerial Methods in Decision Making Under Uncertainty",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "BA 3100",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 1,
+        "name": "Professional Development",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "BCOM 3310",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Business Communication",
+        "prereqs": [
+            {
+                "codes": [
+                    "RHET 1302"
+                ]
+            },
+            {
+                "codes": [
+                    "BA 3100"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "BCOM 4350",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Advanced Business Communication",
+        "prereqs": [
+            {
+                "codes": [
+                    "BCOM 3310"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "FIN 3320",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": [
+                    "OPRE 3360"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Business Finance",
+        "prereqs": [
+            {
+                "codes": [
+                    "ACCT 2301"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ITSS 3300",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Information Technology for Business",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "OPRE 3310",
+        "completed": false,
+        "coreqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "OPRE 3360"
+                ]
+            }
+        ],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Operations Management",
+        "prereqs": [
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2418"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "OBHR 3310",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Organizational Behavior",
+        "prereqs": [
+            {
+                "codes": [
+                    "RHET 1302"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2413"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "MKT 3300",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Principles of Marketing",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "BPS 4305",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Strategic Management",
+        "prereqs": [
+            {
+                "codes": [
+                    "BCOM 3310"
+                ]
+            },
+            {
+                "codes": [
+                    "FIN 3320"
+                ]
+            },
+            {
+                "codes": [
+                    "ITSS 3300"
+                ]
+            },
+            {
+                "codes": [
+                    "OPRE 3310"
+                ]
+            },
+            {
+                "codes": [
+                    "OBHR 3310"
+                ]
+            },
+            {
+                "codes": [
+                    "MKT 3300"
+                ]
+            },
+            {
+                "codes": [
+                    "OPRE 3360"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "IMS 3310",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "International Business",
+        "prereqs": [
+            {
+                "codes": [
+                    "ECON 2301"
+                ]
+            },
+            {
+                "codes": [
+                    "MATH 2414"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 3301",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Innovation and Entrepreneurship",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 3360",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Entrepreneurial Finance",
+        "prereqs": [
+            {
+                "codes": [
+                    "FIN 3320"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 4311",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Entrepreneurial Strategy and Business Models",
+        "prereqs": [
+            {
+                "codes": [
+                    "ENTP 3301"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 4320",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Small Business Management",
+        "prereqs": [
+            {
+                "codes": [
+                    "ENTP 3301"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 4350",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Corporate Entrepreneurship",
+        "prereqs": [
+            {
+                "codes": []
+            },
+            {
+                "codes": [
+                    "ENTP 3301"
+                ]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 3320",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Start-up Launch I",
+        "prereqs": []
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 3321",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Start-up Launch II",
+        "prereqs": [
+            {
+                "codes": ["ENTP 3320"]
+            }
+        ]
+    },
+    {
+        "alternatives": [],
+        "code": "ENTP 4330",
+        "completed": false,
+        "coreqs": [],
+        "description": "Testing Description but don't actually care",
+        "equivalencies": [],
+        "hours": 3,
+        "name": "Entrepreneurial Marketing",
+        "prereqs": [
+            {
+                "codes": [
+                    "ENTP 3301"
+                ]
+            }
+        ]
+    }
+]

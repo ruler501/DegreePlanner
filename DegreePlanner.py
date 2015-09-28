@@ -158,6 +158,14 @@ def isCompleted(code):
             return item["completed"]
     return False
 
+def isCoreq(source, dest):
+    for item in items:
+        if item["code"] == source:
+            for coreqL in item["coreqs"]:
+                if dest in coreqL["codes"]:
+                    return True
+    return False
+
 courseWeights = collections.defaultdict(int)
 courseIDeps = collections.defaultdict(list)
 courseDeps = collections.defaultdict(list)
@@ -185,6 +193,9 @@ def sortGraph(items, edges):
             if isinstance(edge[0], tuple):
                 target = edge[0][1]
                 source = edge[0][0]
+                if target == item["code"] and not isCoreq(source, target):
+                    if source not in courseDeps[item["code"]]:
+                        courseDeps[item["code"]].append(source)
             else:
                 target = edge[1]
                 source = edge[0]
@@ -201,11 +212,10 @@ def sortGraph(items, edges):
         if item["completed"]:
             courseDeps[item["code"]] = []
     courseList = []
+    print(courseDeps, '\n')
     while not (len(courseDeps.keys()) == 0):
         tList = []
         for code, deps in courseDeps.items():
-            if deps == None:
-                continue
             if len(deps) == 0 and (code not in courseList):
                 tList.append(code)
         if len(tList) == 0:
@@ -217,6 +227,7 @@ def sortGraph(items, edges):
             total += findHours(code)
             if total > 18:
                 #print(total, ' ', code, ' ', tList[:index])
+                total -= findHours(code)
                 break
             index += 1
             for key in courseDeps.keys():
@@ -239,17 +250,14 @@ def generateGraph(items):
     """
     nodes = []
     edges = []
-    dot = Digraph(format="pdf",graph_attr = {"splines": "ortho", "autosize": "false", "size": "8.5,11", 
-                                             "landscape": "true", "ratio": "compress", "fontsize": "32",
-                                             "page": "8.5,11", "ranksep": "1.5 equally"})
     for item in items:
         if not item["completed"]:
             for prereqs in item["prereqs"]:
                 for prereq in prereqs["codes"]:
-                    edges.append((prereq, item["code"]))
+                    edges.append(((prereq, item["code"]), {"weight": "4", "penwidth": "1"}))
             for coreqs in item["coreqs"]:
                 for coreq in coreqs["codes"]:
-                    edges.append(((coreq, item["code"]), {"style": "dashed", "constraint": "false"}))
+                    edges.append(((coreq, item["code"]), {"style": "dashed", "constraint": "false", "weight": "6", "penwidth": "1"}))
         found = False
         for node in nodes:
             if node[0] == item["code"]:
@@ -264,16 +272,18 @@ def generateGraph(items):
                 else:
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"] + '\n' +  item["description"] 
                                                                    + ' ' + str(item["hours"]) + " semester hours.",
-                                                 "fontsize": "24", "height": "1.5", "width": "8.5", "fixedsize": "shape"}))
+                                                 "fontsize": "12"}))
             else:
                 if item["completed"]:
                     nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fillcolor": "gray",
-                                                 "style": "filled", "fontsize": "24", "height": "1.5",
-                                                 "width": "8.5", "fixedsize": "shape"}))
+                                                 "style": "filled", "fontsize": "11"}))
                 else:
-                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fontsize": "24", "height": "1.5",
-                                                 "width": "8.5", "fixedsize": "shape"}))
+                    nodes.append((item["code"], {"label": item["code"] + ' ' + item["name"], "fontsize": "11"}))
     courseList = sortGraph(items, edges)
+    dot = Digraph(format="pdf",graph_attr = {"splines": "ortho", "autosize": "false", "size": "17,11", "scale": "1.0", "dpi": "300", 
+                                             "landscape": "true", "fontsize": "24", 
+                                             "page": "8.5,11", "ranksep": str(30/float(len(courseList)))+" equally", "margin": "0.1",
+                                             "pad": "0.1", "conentrate": "false", "voro_margin": "0.0"})
     for i,courses in enumerate(courseList):
         tNodes = []
         tDot = Digraph("cluster_"+str(i), graph_attr={"rank": "same", "label": "Semester "+str(i+START_SEMESTER), "style": "rounded", "penwidth": "3"})
@@ -284,13 +294,27 @@ def generateGraph(items):
                     tNodes.append(node)
         tDot = add_nodes(tDot, tNodes)
         dot.subgraph(tDot)
-        print(i)
+        #dot = add_nodes(dot, tNodes)
         if i > 0:
             edges.append(((courseList[i-1][0], courseList[i][0]), {"style": "invis", "weight": "100"}))
     dot = add_edges(dot, edges)
     with open("DegreePlan.dot", 'w') as dotOut:
         print(dot.source, file=dotOut)
     dot.render(view=True)
+
+def countHours(items):
+    total = 0
+    totalUp = 0
+    totalNeeded = 0
+    for item in items:
+        if item["code"].split()[1][0] in ('3','4'):
+            totalUp += item["hours"]
+        if not item["completed"]:
+            totalNeeded += item["hours"]
+        total += item["hours"]
+    print("Total Hours: ", total)
+    print("Total Hours Left: ", totalNeeded)
+    print("Total Upper Division Hours: ", totalUp)
 
 if len(sys.argv) > 1:
     for url in sys.argv[1:]:
@@ -301,3 +325,4 @@ else:
     with open("DegreePlan.json", 'r') as dbIn:
         items = json.loads(dbIn.read())
 generateGraph(items)
+countHours(items)
